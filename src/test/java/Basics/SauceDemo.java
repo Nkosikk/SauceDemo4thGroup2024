@@ -10,6 +10,7 @@ import org.testng.annotations.Test;
 @Test
 public class SauceDemo {
     WebDriver driver;
+    By productsTitle = By.xpath("//span[@class='title'][contains(.,'Products')]");
 
 
     public void loginWithValidDetails() throws InterruptedException {
@@ -19,10 +20,10 @@ public class SauceDemo {
         driver.findElement(By.id("password")).sendKeys("secret_sauce");
         driver.findElement(By.id("login-button")).click();
 
-        String productTExt = driver.findElement(By.xpath("//span[@class='title'][contains(.,'Products')]")).getText();
+        String productTExt = driver.findElement(productsTitle).getText();
         Assert.assertEquals(productTExt,"Products");
 
-        driver.findElement(By.xpath("//span[@class='title'][contains(.,'Products')]")).isDisplayed();
+        driver.findElement (productsTitle).isDisplayed();
         Thread.sleep(2000);
     }
 
