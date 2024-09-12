@@ -7,6 +7,7 @@ This is the document that will explain to us how the project works
 
 ## Maven Dependencies required
 * Selenium - latest version
+* Faker
 * Testng
   * latest version
 
