@@ -23,7 +23,7 @@ public class SauceDemo {
         Assert.assertEquals(productTExt,"Products");
 
         driver.findElement(By.xpath("//span[@class='title'][contains(.,'Products')]")).isDisplayed();
-        Thread.sleep(2000);
+        Thread.sleep(1000);
     }
 
     @AfterTest
