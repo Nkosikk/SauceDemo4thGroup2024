@@ -10,7 +10,7 @@ import org.testng.annotations.Test;
 @Test
 public class SauceDemo {
     WebDriver driver;
-    // validate log-in
+
 
     public void loginWithValidDetails() throws InterruptedException {
         driver = new ChromeDriver();
