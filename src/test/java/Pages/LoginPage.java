@@ -22,8 +22,8 @@ public class LoginPage {
     @FindBy(name = "login-button")
     WebElement loginButton_name;
 
-    @FindBy(xpath = "//span[contains(.,'Products')]")
-    WebElement product_xpath;
+    @FindBy(xpath = "//h3[contains(.,'Epic sadface: Username and password do not match any user in this service')]")
+    WebElement loginError_xpath;
 
     public LoginPage(WebDriver driver) {
         this.driver = driver;
@@ -42,14 +42,10 @@ public class LoginPage {
         loginButton_name.click();
     }
 
-    public void verifyProductTitleIsVisible() {
-        new WebDriverWait(driver, Duration.ofSeconds(20)).until(ExpectedConditions.visibilityOf(product_xpath));
+    public void verifyLoginErrorMessage() {
+        new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.visibilityOf(loginError_xpath));
 
-        // The below does axactly the same thing, you need to use one
-        product_xpath.isDisplayed();
-
-        String productTExt = product_xpath.getText();
-        Assert.assertEquals(productTExt, "Products");
+        loginError_xpath.isDisplayed();
     }
 
 
