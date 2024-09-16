@@ -26,9 +26,4 @@ public class BrowserFactory {
         return driver;
     }
 
-    @Test
-    public void test(){
-        startBrowser("anything","https://www.saucedemo.com/");
-    }
-
 }
