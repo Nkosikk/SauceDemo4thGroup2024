@@ -9,7 +9,7 @@ import javax.swing.*;
 public class PurchaseProductTests extends Base {
 
 
-    public void loginWithInvalidDetailsTests() {
+    public void loginWithInvalidDetailsTests() throws InterruptedException {
         loginPage.enterUsername("standard_user" + "invalid");
         loginPage.enterPassword("secret_sauce");
         loginPage.clickLoginButton();
