@@ -23,6 +23,7 @@ public class PurchaseProductTests extends Base {
     @Test(dependsOnMethods = "enterUsernameTests")
     public void enterPassword() {
         loginPage.enterPassword("secret_sauce");
+        takesScreenshots.takesScreenshot(driver,"login page");
     }
 
     @Test(dependsOnMethods = "enterPassword")
@@ -32,6 +33,7 @@ public class PurchaseProductTests extends Base {
     @Test(dependsOnMethods = "clickLoginTests")
     public void verifyLoginSuccess() {
         homePage.verifyProductTitleIsVisible();
+        takesScreenshots.takesScreenshot(driver,"Home page");
     }
 
 
