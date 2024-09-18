@@ -10,19 +10,19 @@ public class PurchaseProductTests extends Base {
 
 
     public void loginWithInvalidDetailsTests() {
-        loginPage.enterUsername("standard_user" + "invalid");
-        loginPage.enterPassword("secret_sauce");
+        loginPage.enterUsername(readFromExcel.username + "invalid");
+        loginPage.enterPassword(readFromExcel.password);
         loginPage.clickLoginButton();
         loginPage.verifyLoginErrorMessage();
     }
     @Test(dependsOnMethods = "loginWithInvalidDetailsTests")
     public void enterUsernameTests() {
-        loginPage.enterUsername("standard_user");
+        loginPage.enterUsername(readFromExcel.username);
     }
 
     @Test(dependsOnMethods = "enterUsernameTests")
     public void enterPassword() {
-        loginPage.enterPassword("secret_sauce");
+        loginPage.enterPassword(readFromExcel.password);
         takesScreenshots.takesScreenshot(driver,"login page");
     }
 
@@ -33,7 +33,7 @@ public class PurchaseProductTests extends Base {
     @Test(dependsOnMethods = "clickLoginTests")
     public void verifyLoginSuccess() {
         homePage.verifyProductTitleIsVisible();
-        takesScreenshots.takesScreenshot(driver,"Home page");
+        takesScreenshots.takesScreenshot(driver,"login page");
     }
 
 
