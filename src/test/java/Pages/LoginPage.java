@@ -31,10 +31,12 @@ public class LoginPage {
 
     public void enterUsername(String username) {
         new WebDriverWait(driver, Duration.ofSeconds(20)).until(ExpectedConditions.visibilityOf(username_xpath));
+        username_xpath.clear();
         username_xpath.sendKeys(username);
     }
 
     public void enterPassword(String password) {
+        password_id.clear();
         password_id.sendKeys(password);
     }
 
