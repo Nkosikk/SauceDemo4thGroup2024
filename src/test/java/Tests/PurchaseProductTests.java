@@ -58,6 +58,12 @@ public class PurchaseProductTests extends Base {
         yourCartPage.clickCheckoutButton();
     }
 
+    @Test(dependsOnMethods = "clickCheckout")
+    public void verifyYourInformationPage(){
+        yourInformationPage.verifyYourInformationTitleIsVisible();
+        takesScreenshots.takesScreenshot(driver,"Your Information Page");
+    }
+
 
     @AfterTest
     public void closeBrowser() {
