@@ -52,6 +52,13 @@ public class PurchaseProductTests extends Base {
         yourCartPage.verifyYourCartTitleIsVisible();
         takesScreenshots.takesScreenshot(driver,"Your Cart Page");
     };
+
+    @Test(dependsOnMethods = "verifyYourCartPage" )
+    public void clickCheckout(){
+        yourCartPage.clickCheckoutButton();
+    }
+
+
     @AfterTest
     public void closeBrowser() {
         driver.quit();

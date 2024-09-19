@@ -16,6 +16,9 @@ public class YourCartPage {
     @FindBy(xpath = "//span[contains(.,'Your Cart')]")
     WebElement YourCart_xpath;
 
+    @FindBy(id = "checkout")
+    WebElement YourCart_id;
+
 
 
     public YourCartPage(WebDriver driver) {
@@ -27,5 +30,7 @@ public class YourCartPage {
         YourCart_xpath.isDisplayed();
     }
 
-
+    public void clickCheckoutButton() {
+        YourCart_id.click();
+    }
 }
