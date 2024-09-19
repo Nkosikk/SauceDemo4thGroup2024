@@ -1,5 +1,6 @@
 package Tests;
 
+import Pages.YourCartPage;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.Test;
 
@@ -33,10 +34,24 @@ public class PurchaseProductTests extends Base {
     @Test(dependsOnMethods = "clickLoginTests")
     public void verifyLoginSuccess() {
         homePage.verifyProductTitleIsVisible();
-        takesScreenshots.takesScreenshot(driver,"login page");
+        takesScreenshots.takesScreenshot(driver,"Home page");
     }
 
+    @Test(dependsOnMethods = "verifyLoginSuccess")
+    public void clickAddToCart(){
+        homePage.clickAddToCartButton();
+    }
 
+    @Test(dependsOnMethods = "clickAddToCart")
+    public void clickShoppingCart() {
+        homePage.clickShoppingCartLink();
+    }
+
+    @Test(dependsOnMethods = "clickShoppingCart")
+    public void verifyYourCartPage(){
+        yourCartPage.verifyYourCartTitleIsVisible();
+        takesScreenshots.takesScreenshot(driver,"Your Cart Page");
+    };
     @AfterTest
     public void closeBrowser() {
         driver.quit();

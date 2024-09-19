@@ -16,6 +16,12 @@ public class HomePage {
     @FindBy(xpath = "//span[contains(.,'Products')]")
     WebElement product_xpath;
 
+    @FindBy(id = "add-to-cart-sauce-labs-backpack")
+    WebElement addToCartButton_id;
+
+    @FindBy(xpath = "//div[@id='shopping_cart_container']/a/span")
+    WebElement shoppingCartLink_xpath;
+
 
     public HomePage(WebDriver driver) {
         this.driver = driver;
@@ -29,6 +35,14 @@ public class HomePage {
 
         String productTExt = product_xpath.getText();
         Assert.assertEquals(productTExt, "Products");
+    }
+
+    public void clickAddToCartButton() {
+        addToCartButton_id.click();
+    }
+
+    public void clickShoppingCartLink() {
+        shoppingCartLink_xpath.click();
     }
 
 
