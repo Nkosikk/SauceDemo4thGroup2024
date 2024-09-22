@@ -18,6 +18,8 @@ public class SauceDemo {
         driver.findElement(By.id("user-name")).sendKeys("standard_user");
         driver.findElement(By.id("password")).sendKeys("secret_sauce");
         driver.findElement(By.id("login-button")).click();
+        driver.findElement(By.id("login-button")).click();
+
 
         String productTExt = driver.findElement(By.xpath("//span[@class='title'][contains(.,'Products')]")).getText();
         Assert.assertEquals(productTExt,"Products");
