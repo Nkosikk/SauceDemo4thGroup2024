@@ -1,5 +1,6 @@
 package Pages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -16,8 +17,10 @@ public class LoginPage {
     @FindBy(xpath = "//input[@name='user-name']")
     WebElement username_xpath;
 
+
     @FindBy(id = "password")
     WebElement password_id;
+
 
     @FindBy(name = "login-button")
     WebElement loginButton_name;
@@ -31,11 +34,14 @@ public class LoginPage {
 
     public void enterUsername(String username) {
         new WebDriverWait(driver, Duration.ofSeconds(20)).until(ExpectedConditions.visibilityOf(username_xpath));
+        username_xpath.clear();
         username_xpath.sendKeys(username);
     }
 
     public void enterPassword(String password) {
+        password_id.clear();
         password_id.sendKeys(password);
+
     }
 
     public void clickLoginButton() {
@@ -47,6 +53,8 @@ public class LoginPage {
 
         loginError_xpath.isDisplayed();
     }
+
+
 
 
 }
