@@ -6,6 +6,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
+import org.w3c.dom.html.HTMLInputElement;
 
 import java.time.Duration;
 
@@ -29,7 +30,15 @@ public class HomePage {
 
         String productTExt = product_xpath.getText();
         Assert.assertEquals(productTExt, "Products");
+
+    }
+
+    @FindBy(id = "add-to-cart-sauce-labs-bike-light")
+    WebElement AddToCartButton_id;
+
+
+    //public void clickAddToCartButton() {
+       // AddToCart_id.click();
     }
 
 
-}

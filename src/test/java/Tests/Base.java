@@ -1,5 +1,6 @@
 package Tests;
 
+import Pages.AddToCartPage;
 import Pages.HomePage;
 import Pages.LoginPage;
 import Utils.BrowserFactory;
@@ -17,7 +18,7 @@ public class Base {
 
     LoginPage loginPage = PageFactory.initElements(driver,LoginPage.class);
     HomePage homePage = PageFactory.initElements(driver,HomePage.class);
-
+    AddToCartPage AddToCartPage = PageFactory.initElements(driver, AddToCartPage.class);
     TakesScreenshots takesScreenshots = new TakesScreenshots();
 
     ReadFromExcel readFromExcel;

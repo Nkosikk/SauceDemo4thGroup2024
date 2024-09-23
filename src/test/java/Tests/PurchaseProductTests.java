@@ -14,6 +14,7 @@ public class PurchaseProductTests extends Base {
         loginPage.enterPassword(readFromExcel.password);
         loginPage.clickLoginButton();
         loginPage.verifyLoginErrorMessage();
+        AddToCartPage.clickAddToCartButton();
     }
     @Test(dependsOnMethods = "loginWithInvalidDetailsTests")
     public void enterUsernameTests() {
@@ -30,11 +31,19 @@ public class PurchaseProductTests extends Base {
     public void clickLoginTests() {
         loginPage.clickLoginButton();
     }
+
     @Test(dependsOnMethods = "clickLoginTests")
     public void verifyLoginSuccess() {
         homePage.verifyProductTitleIsVisible();
         takesScreenshots.takesScreenshot(driver,"login page");
     }
+
+    @Test(dependsOnMethods = "verifyLoginSuccess")
+    public void clickAddToCartButton() {
+        AddToCartButtonPage.clickAddToCartButtonButton();
+        takesScreenshots.takesScreenshot(driver,"AddToCart page");
+    }
+
 
 
     @AfterTest
