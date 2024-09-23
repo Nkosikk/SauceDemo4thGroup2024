@@ -35,10 +35,20 @@ public class PurchaseProductTests extends Base {
     }
 
 
-    @AfterTest
+    @Test(dependsOnMethods = "verifyLoginSuccess")
+    public void AddItemsToCartTest() {
+        homePage.AddItemsToCart();
+
+    }
+    @Test(dependsOnMethods = "AddItemsToCartTest")
+    public void verifyYourCartTitleIsVisibleTest() {
+        homePage.verifyYourCartTitleIsVisible();
+    }
+
+   /* @AfterTest
     public void closeBrowser() {
         driver.quit();
-    }
+    }*/
 
 
 }
