@@ -1,5 +1,6 @@
 package Tests;
 
+import Pages.CheckoutYourInformationPage;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.Test;
 
@@ -15,6 +16,7 @@ public class PurchaseProductTests extends Base {
         loginPage.clickLoginButton();
         loginPage.verifyLoginErrorMessage();
     }
+
     @Test(dependsOnMethods = "loginWithInvalidDetailsTests")
     public void enterUsernameTests() {
         loginPage.enterUsername(readFromExcel.username);
@@ -23,23 +25,73 @@ public class PurchaseProductTests extends Base {
     @Test(dependsOnMethods = "enterUsernameTests")
     public void enterPassword() {
         loginPage.enterPassword(readFromExcel.password);
-        takesScreenshots.takesScreenshot(driver,"login page");
+        takesScreenshots.takesScreenshot(driver, "login page");
     }
 
     @Test(dependsOnMethods = "enterPassword")
     public void clickLoginTests() {
         loginPage.clickLoginButton();
     }
+
     @Test(dependsOnMethods = "clickLoginTests")
     public void verifyLoginSuccess() {
         homePage.verifyProductTitleIsVisible();
-        takesScreenshots.takesScreenshot(driver,"login page");
+        takesScreenshots.takesScreenshot(driver, "login page");
     }
 
+    @Test(dependsOnMethods = "verifyLoginSuccess")
+    public void addToCart() {
+        homePage.addProductsToCart();
+    }
+
+    @Test(dependsOnMethods = "addToCart")
+    public void checkMyShoppingCart() {
+        homePage.viewCart();
+    }
+
+    @Test(dependsOnMethods = "checkMyShoppingCart")
+    public void verifyMyCart() {
+        cartPage.verifyMyCartTitleIsVisible();
+        takesScreenshots.takesScreenshot(driver, "Your Cart page");
+    }
+
+    @Test(dependsOnMethods = "verifyMyCart")
+    public void removeFromCart(){
+        cartPage.removeProductsFromCart();
+        takesScreenshots.takesScreenshot(driver, "Your Cart page (Item Removed)");
+    }
+
+    @Test(dependsOnMethods = "removeFromCart")
+    public void checkout(){
+        cartPage.proceedToCheckout();
+        takesScreenshots.takesScreenshot(driver, "Your Cart page (Item Removed)");
+    }
+
+    @Test(dependsOnMethods = "checkout")
+    public void verifyCheckoutInfo(){
+        checkoutInfoPage.verifyCheckoutYourInformationTitleIsVisible();
+        takesScreenshots.takesScreenshot(driver, "Checkout Your Information Page");
+    }
+
+    @Test(dependsOnMethods = "verifyCheckoutInfo")
+    public void enterFistNameTest(){
+        checkoutInfoPage.enterFirstName(readFromExcel.firstName);
+    }
+
+    @Test(dependsOnMethods = "enterFistNameTest")
+    public void enterLastNameTest(){
+        checkoutInfoPage.enterLastName(readFromExcel.lastName);
+    }
+
+    @Test(dependsOnMethods = "enterLastNameTest")
+    public void enterZipTest(){
+        checkoutInfoPage.enterZipCode(readFromExcel.zipCode);
+        takesScreenshots.takesScreenshot(driver,"User Information");
+    }
 
     @AfterTest
     public void closeBrowser() {
-        driver.quit();
+        //driver.quit();
     }
 
 
