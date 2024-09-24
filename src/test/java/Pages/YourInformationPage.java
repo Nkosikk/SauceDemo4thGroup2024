@@ -5,6 +5,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.annotations.Test;
 
 import java.time.Duration;
 
@@ -13,7 +14,16 @@ public class YourInformationPage {
     WebDriver driver;
 
     @FindBy(xpath = "//span[contains(.,'Checkout: Your Information')]")
-    WebElement YourInformation_xpath;
+    WebElement yourInformation_xpath;
+
+    @FindBy(id = "first-name")
+    WebElement firstName_id;
+
+    @FindBy(id = "last-name")
+    WebElement lastName_id;
+
+    @FindBy(id = "postal-code")
+    WebElement postalCode_id;
 
 
 
@@ -23,8 +33,27 @@ public class YourInformationPage {
     }
 
     public void verifyYourInformationTitleIsVisible() {
-        new WebDriverWait(driver, Duration.ofSeconds(20)).until(ExpectedConditions.visibilityOf(YourInformation_xpath));
-        YourInformation_xpath.isDisplayed();
+        new WebDriverWait(driver, Duration.ofSeconds(20)).until(ExpectedConditions.visibilityOf(yourInformation_xpath));
+        yourInformation_xpath.isDisplayed();
     }
+
+    public void enterFirstName(String firstName) {
+        firstName_id.clear();
+        firstName_id.sendKeys(firstName);
+
+    }
+
+    public void enterLastName(String lastName) {
+        lastName_id.clear();
+        lastName_id.sendKeys(lastName);
+
+    }
+
+    public void enterPostalCode(String postalCode) {
+        postalCode_id.clear();
+        postalCode_id.sendKeys(postalCode);
+
+    }
+
 
 }

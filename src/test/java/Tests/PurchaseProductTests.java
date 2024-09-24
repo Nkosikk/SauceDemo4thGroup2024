@@ -1,6 +1,7 @@
 package Tests;
 
 import Pages.YourCartPage;
+import Pages.YourInformationPage;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.Test;
 
@@ -62,6 +63,22 @@ public class PurchaseProductTests extends Base {
     public void verifyYourInformationPage(){
         yourInformationPage.verifyYourInformationTitleIsVisible();
         takesScreenshots.takesScreenshot(driver,"Your Information Page");
+    }
+
+    @Test(dependsOnMethods = "verifyYourInformationPage")
+    public void enterFirstname() {
+        yourInformationPage.enterFirstName(readFromExcel.firstName);
+    }
+
+    @Test(dependsOnMethods = "enterFirstname")
+    public void enterLastname() {
+        yourInformationPage.enterLastName(readFromExcel.lastName);
+    }
+
+    @Test(dependsOnMethods = "enterLastname")
+    public void enterPostalCode() {
+        yourInformationPage.enterPostalCode(readFromExcel.postalCode);
+        takesScreenshots.takesScreenshot(driver,"Address Details");
     }
 
 

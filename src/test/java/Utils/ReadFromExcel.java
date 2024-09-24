@@ -18,7 +18,13 @@ public class ReadFromExcel {
     }
 
     XSSFSheet sheet = workbook.getSheet("login Details");
+    XSSFSheet sheet1 = workbook.getSheet("User Information");
 
     public String username = sheet.getRow(1).getCell(0).getStringCellValue();
     public String password = sheet.getRow(1).getCell(1).getStringCellValue();
+    public String firstName = sheet1.getRow(2).getCell(0).getStringCellValue();
+    public String lastName = sheet1.getRow(2).getCell(1).getStringCellValue();
+    public String postalCode = sheet1.getRow(2).getCell(2).getStringCellValue();
+
+
 }
