@@ -25,6 +25,9 @@ public class YourInformationPage {
     @FindBy(id = "postal-code")
     WebElement postalCode_id;
 
+    @FindBy(id = "continue")
+    WebElement continue_id;
+
 
 
 
@@ -55,5 +58,8 @@ public class YourInformationPage {
 
     }
 
+    public void clickContinueButton(){
+        continue_id.click();
+    }
 
 }

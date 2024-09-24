@@ -81,6 +81,17 @@ public class PurchaseProductTests extends Base {
         takesScreenshots.takesScreenshot(driver,"Address Details");
     }
 
+    @Test(dependsOnMethods = "enterPostalCode")
+    public void clickContinue(){
+        yourInformationPage.clickContinueButton();
+    }
+
+    @Test(dependsOnMethods = "clickContinue")
+    public void verifyCheckoutPage(){
+        checkoutPage.verifyCheckoutOverviewTitleIsVisible();
+        takesScreenshots.takesScreenshot(driver,"Checkout Overview");
+    }
+
 
     @AfterTest
     public void closeBrowser() {
