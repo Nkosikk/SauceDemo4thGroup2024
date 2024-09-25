@@ -11,19 +11,19 @@ public class PurchaseProductTests extends Base {
 
 
     public void loginWithInvalidDetailsTests() {
-        loginPage.enterUsername("standard_user" + "invalid");
-        loginPage.enterPassword("secret_sauce");
+        loginPage.enterUsername(readFromExcel.username + "invalid");
+        loginPage.enterPassword(readFromExcel.password);
         loginPage.clickLoginButton();
         loginPage.verifyLoginErrorMessage();
     }
     @Test(dependsOnMethods = "loginWithInvalidDetailsTests")
     public void enterUsernameTests() {
-        loginPage.enterUsername("standard_user");
+        loginPage.enterUsername(readFromExcel.username);
     }
 
     @Test(dependsOnMethods = "enterUsernameTests")
     public void enterPassword() {
-        loginPage.enterPassword("secret_sauce");
+        loginPage.enterPassword(readFromExcel.password);
         takesScreenshots.takeScreenshot(driver,"login Page");
     }
 
@@ -48,6 +48,13 @@ public class PurchaseProductTests extends Base {
     public void verifyCheckoutPage() {checkoutPage.verifyCheckoutPageIsVisible(); }
     @Test(dependsOnMethods = "verifyCheckoutPage")
     public void clickCheckOut(){checkoutPage.clickCheckoutButton();}
+    @Test(dependsOnMethods = "clickCheckOut")
+    public void enterFirstNameTest() { yourInformationPage.enterFirstName(readFromExcel.firstName); }
+    @Test(dependsOnMethods = "enterFirstNameTest")
+    public void enterLastNameTest(){ yourInformationPage.enterLastName(readFromExcel.lastName); }
+    @Test(dependsOnMethods = "enterLastNameTest")
+    public void enterPostalCodeTest(){ yourInformationPage.enterPostalCode(Integer.valueOf(readFromExcel.postalCode)); }
+
 
 
     @AfterTest

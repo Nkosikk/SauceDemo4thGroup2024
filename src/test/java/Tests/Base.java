@@ -1,15 +1,15 @@
 package Tests;
 
-import Pages.AddProductsToCart;
-import Pages.CheckoutPage;
-import Pages.HomePage;
-import Pages.LoginPage;
+import Pages.*;
 import Utils.BrowserFactory;
+import Utils.ReadFromExcel;
 import Utils.TakesScreenshots;
 import Utils.TakesScreenshots;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
+
+import java.io.IOException;
 
 public class Base {
 
@@ -22,4 +22,16 @@ public class Base {
     AddProductsToCart addProductsToCart = PageFactory.initElements(driver, AddProductsToCart.class);
     CheckoutPage checkoutPage = PageFactory.initElements(driver,CheckoutPage.class);
     TakesScreenshots takesScreenshots = new TakesScreenshots();
+    ReadFromExcel readFromExcel;
+
+    {
+        try {
+            readFromExcel = new ReadFromExcel();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+    YourInformationPage yourInformationPage = PageFactory.initElements(driver, YourInformationPage.class);
+
+
 }
