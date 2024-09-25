@@ -24,6 +24,7 @@ public class PurchaseProductTests extends Base {
     @Test(dependsOnMethods = "enterUsernameTests")
     public void enterPassword() {
         loginPage.enterPassword("secret_sauce");
+        takesScreenshots.takeScreenshot(driver,"login Page");
     }
 
     @Test(dependsOnMethods = "enterPassword")
@@ -40,7 +41,9 @@ public class PurchaseProductTests extends Base {
     @Test(dependsOnMethods = "addBackPack")
     public void addBike() { addProductsToCart.addBike(); }
     @Test(dependsOnMethods = "addBike")
-    public void clickCart() {addProductsToCart.clickCart();}
+    public void clickCart() {addProductsToCart.clickCart();
+        takesScreenshots.takeScreenshot(driver,"checkoutPage");}
+
     @Test(dependsOnMethods = "clickCart")
     public void verifyCheckoutPage() {checkoutPage.verifyCheckoutPageIsVisible(); }
     @Test(dependsOnMethods = "verifyCheckoutPage")
