@@ -25,7 +25,7 @@ public class HomePage {
         new WebDriverWait(driver, Duration.ofSeconds(20)).until(ExpectedConditions.visibilityOf(product_xpath));
 
         // The below does axactly the same thing, you need to use one
-        product_xpath.isDisplayed();
+        //product_xpath.isDisplayed();
 
         String productTExt = product_xpath.getText();
         Assert.assertEquals(productTExt, "Products");

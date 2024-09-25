@@ -1,5 +1,6 @@
 package Tests;
 
+import Pages.AddProductsToCart;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.Test;
 
@@ -33,6 +34,17 @@ public class PurchaseProductTests extends Base {
     public void verifyLoginSuccess() {
         homePage.verifyProductTitleIsVisible();
     }
+
+    @Test(dependsOnMethods = "verifyLoginSuccess")
+    public void addBackPack() { addProductsToCart.addBackpack(); }
+    @Test(dependsOnMethods = "addBackPack")
+    public void addBike() { addProductsToCart.addBike(); }
+    @Test(dependsOnMethods = "addBike")
+    public void clickCart() {addProductsToCart.clickCart();}
+    @Test(dependsOnMethods = "clickCart")
+    public void verifyCheckoutPage() {checkoutPage.verifyCheckoutPageIsVisible(); }
+    @Test(dependsOnMethods = "verifyCheckoutPage")
+    public void clickCheckOut(){checkoutPage.clickCheckoutButton();}
 
 
     @AfterTest
