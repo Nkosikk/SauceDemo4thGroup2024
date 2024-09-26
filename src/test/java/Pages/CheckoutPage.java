@@ -1,12 +1,16 @@
 package Pages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
+import org.testng.annotations.Test;
 
 import java.time.Duration;
+import java.util.List;
 
 public class CheckoutPage {
 
@@ -14,16 +18,6 @@ public class CheckoutPage {
 
     @FindBy(xpath = "//span[contains(.,'Checkout: Overview')]")
     WebElement checkout_xpath;
-
-    @FindBy(id = "first-name")
-    WebElement firstName_id;
-
-    @FindBy(id = "last-name")
-    WebElement lastName_id;
-
-    @FindBy(id = "postal-code")
-    WebElement postalCode_id;
-
 
 
 
@@ -36,23 +30,33 @@ public class CheckoutPage {
         checkout_xpath.isDisplayed();
     }
 
-//    public void enterFirstName(String firstName) {
-//        firstName_id.clear();
-//        firstName_id.sendKeys(firstName);
-//
-//    }
-//
-//    public void enterLastName(String lastName) {
-//        lastName_id.clear();
-//        lastName_id.sendKeys(lastName);
-//
-//    }
-//
-//    public void enterPostalCode(String postalCode) {
-//        postalCode_id.clear();
-//        postalCode_id.sendKeys(postalCode);
-//
-//    }
+    public void calculateCartItems() {
+        WebElement cart = driver.findElement(By.className("cart_list"));
+        List<WebElement> items = cart.findElements(By.className("cart_item"));
+        if(items.size() > 0){
+            String subTotalText = cart.findElement(By.xpath("//div[contains(@class,'summary_subtotal_label')]")).getText();
+            double subTotal = Double.parseDouble(subTotalText.split(" ")[2].replace("$", ""));
 
+            String totalText = cart.findElement(By.xpath("//div[contains(@class,'summary_total_label')]")).getText();
+            double total = Double.parseDouble(totalText.split(" ")[1].replace("$", ""));
 
+            System.out.println(total);
+
+            double taxPerc = 0.08;
+            double taxAmount = subTotal * taxPerc;
+            double tempTotal = subTotal + taxAmount;
+
+            if (Math.round(tempTotal * 100.0) / 100.0 == Math.round(total * 100.0) / 100.0) {
+                assert true;
+            } else {
+                assert false;
+
+        }
+
+        }
+
+    }
 }
+
+
+

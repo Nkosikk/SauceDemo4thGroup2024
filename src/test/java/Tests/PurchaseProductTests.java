@@ -91,6 +91,10 @@ public class PurchaseProductTests extends Base {
         checkoutPage.verifyCheckoutOverviewTitleIsVisible();
         takesScreenshots.takesScreenshot(driver,"Checkout Overview");
     }
+    @Test(dependsOnMethods = "verifyCheckoutPage")
+    public void calculateCartItems(){
+        checkoutPage.calculateCartItems();
+    }
 
 
     @AfterTest
