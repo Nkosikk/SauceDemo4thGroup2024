@@ -19,6 +19,9 @@ public class CheckoutPage {
     @FindBy(xpath = "//span[contains(.,'Checkout: Overview')]")
     WebElement checkout_xpath;
 
+    @FindBy(id = "finish")
+    WebElement finishButton_id;
+
 
 
     public CheckoutPage(WebDriver driver) {
@@ -55,6 +58,10 @@ public class CheckoutPage {
 
         }
 
+    }
+
+    public void clickFinishButton(){
+        finishButton_id.click();
     }
 }
 

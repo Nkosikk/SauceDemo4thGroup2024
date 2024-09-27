@@ -96,6 +96,18 @@ public class PurchaseProductTests extends Base {
         checkoutPage.calculateCartItems();
     }
 
+    @Test(dependsOnMethods = "calculateCartItems")
+    public void clickFinish(){
+        checkoutPage.clickFinishButton();
+
+    }
+
+    @Test(dependsOnMethods = "clickFinish")
+    public void verifyCheckoutCompleteTitleIsVisible(){
+        checkoutCompletePage.verifyCheckoutCompleteTitleIsVisible();
+        takesScreenshots.takesScreenshot(driver,"Checkout Complete");
+    }
+
 
     @AfterTest
     public void closeBrowser() {
