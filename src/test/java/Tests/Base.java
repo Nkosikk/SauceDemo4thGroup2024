@@ -22,6 +22,8 @@ public class Base {
     AddProductsToCart addProductsToCart = PageFactory.initElements(driver, AddProductsToCart.class);
     CheckoutPage checkoutPage = PageFactory.initElements(driver,CheckoutPage.class);
     YourInformationPage yourInformationPage = PageFactory.initElements(driver, YourInformationPage.class);
+    CheckOutOverview checkOutOverview = PageFactory.initElements(driver, CheckOutOverview.class);
+    CheckOutComplete checkOutComplete = PageFactory.initElements(driver, CheckOutComplete.class);
     TakesScreenshots takesScreenshots = new TakesScreenshots();
     ReadFromExcel readFromExcel;
 

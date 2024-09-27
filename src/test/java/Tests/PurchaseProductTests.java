@@ -56,6 +56,14 @@ public class PurchaseProductTests extends Base {
     public void enterPostalCodeTest(){ yourInformationPage.enterPostalCode(Integer.valueOf(readFromExcel.postalCode)); }
     @Test(dependsOnMethods = "enterPostalCodeTest")
     public void clickContinueTest(){ yourInformationPage.clickContinueButton();}
+    @Test(dependsOnMethods = "clickContinueTest")
+    public void checkOutOverviewPageTest(){ checkOutOverview.checkoutOverview();}
+    @Test(dependsOnMethods = "checkOutOverviewPageTest")
+    public void finishButtonTest() { checkOutOverview.clickFinishButton();}
+    @Test(dependsOnMethods = "finishButtonTest")
+    public void backHomeTest() { checkOutComplete.clickBackHomeButton();}
+    @Test(dependsOnMethods = "backHomeTest")
+    public void backToHomePageTest(){ checkOutComplete.verifyBackToHomePage();}
 
 
 
