@@ -34,6 +34,7 @@ public class PurchaseProductTests extends Base {
     @Test(dependsOnMethods = "clickLoginTests")
     public void verifyLoginSuccess() {
         homePage.verifyProductTitleIsVisible();
+        takesScreenshots.takeScreenshot(driver,"Home Page");
     }
 
     @Test(dependsOnMethods = "verifyLoginSuccess")
@@ -45,7 +46,8 @@ public class PurchaseProductTests extends Base {
         takesScreenshots.takeScreenshot(driver,"checkoutPage");}
 
     @Test(dependsOnMethods = "clickCart")
-    public void verifyCheckoutPage() {checkoutPage.verifyCheckoutPageIsVisible(); }
+    public void verifyCheckoutPage() {checkoutPage.verifyCheckoutPageIsVisible();
+        takesScreenshots.takeScreenshot(driver,"Cart");}
     @Test(dependsOnMethods = "verifyCheckoutPage")
     public void clickCheckOut(){checkoutPage.clickCheckoutButton();}
     @Test(dependsOnMethods = "clickCheckOut")
@@ -53,13 +55,16 @@ public class PurchaseProductTests extends Base {
     @Test(dependsOnMethods = "enterFirstNameTest")
     public void enterLastNameTest(){ yourInformationPage.enterLastName(readFromExcel.lastName); }
     @Test(dependsOnMethods = "enterLastNameTest")
-    public void enterPostalCodeTest(){ yourInformationPage.enterPostalCode(Integer.valueOf(readFromExcel.postalCode)); }
+    public void enterPostalCodeTest(){ yourInformationPage.enterPostalCode(Integer.valueOf(readFromExcel.postalCode));
+        takesScreenshots.takeScreenshot(driver,"Personal info Page");}
     @Test(dependsOnMethods = "enterPostalCodeTest")
-    public void clickContinueTest(){ yourInformationPage.clickContinueButton();}
+    public void clickContinueTest(){ yourInformationPage.clickContinueButton();
+        takesScreenshots.takeScreenshot(driver,"Overview Page");}
     @Test(dependsOnMethods = "clickContinueTest")
     public void checkOutOverviewPageTest(){ checkOutOverview.checkoutOverview();}
     @Test(dependsOnMethods = "checkOutOverviewPageTest")
-    public void finishButtonTest() { checkOutOverview.clickFinishButton();}
+    public void finishButtonTest() { checkOutOverview.clickFinishButton();
+        takesScreenshots.takeScreenshot(driver,"Finish Page");}
     @Test(dependsOnMethods = "finishButtonTest")
     public void backHomeTest() { checkOutComplete.clickBackHomeButton();}
     @Test(dependsOnMethods = "backHomeTest")
