@@ -21,6 +21,7 @@ public class Base {
 
     AddProductsToCart addProductsToCart = PageFactory.initElements(driver, AddProductsToCart.class);
     CheckoutPage checkoutPage = PageFactory.initElements(driver,CheckoutPage.class);
+    YourInformationPage yourInformationPage = PageFactory.initElements(driver, YourInformationPage.class);
     TakesScreenshots takesScreenshots = new TakesScreenshots();
     ReadFromExcel readFromExcel;
 
@@ -31,7 +32,7 @@ public class Base {
             throw new RuntimeException(e);
         }
     }
-    YourInformationPage yourInformationPage = PageFactory.initElements(driver, YourInformationPage.class);
+
 
 
 }

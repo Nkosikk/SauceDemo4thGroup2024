@@ -54,6 +54,8 @@ public class PurchaseProductTests extends Base {
     public void enterLastNameTest(){ yourInformationPage.enterLastName(readFromExcel.lastName); }
     @Test(dependsOnMethods = "enterLastNameTest")
     public void enterPostalCodeTest(){ yourInformationPage.enterPostalCode(Integer.valueOf(readFromExcel.postalCode)); }
+    @Test(dependsOnMethods = "enterPostalCodeTest")
+    public void clickContinueTest(){ yourInformationPage.clickContinueButton();}
 
 
 
