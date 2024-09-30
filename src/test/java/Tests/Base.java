@@ -1,7 +1,6 @@
 package Tests;
 
-import Pages.HomePage;
-import Pages.LoginPage;
+import Pages.*;
 import Utils.BrowserFactory;
 import Utils.ReadFromExcel;
 import Utils.TakesScreenshots;
@@ -17,6 +16,14 @@ public class Base {
 
     LoginPage loginPage = PageFactory.initElements(driver,LoginPage.class);
     HomePage homePage = PageFactory.initElements(driver,HomePage.class);
+
+    ShoppingCart shoppingCart = PageFactory.initElements(driver, ShoppingCart.class);
+
+    CheckOutYourInformation checkOutYourInformation = PageFactory.initElements(driver, CheckOutYourInformation.class);
+
+    CheckOutOverView checkOutOverView = PageFactory.initElements(driver, CheckOutOverView.class);
+
+    CheckOutComplete checkOutComplete = PageFactory.initElements(driver, CheckOutComplete.class);
 
     TakesScreenshots takesScreenshots = new TakesScreenshots();
 
