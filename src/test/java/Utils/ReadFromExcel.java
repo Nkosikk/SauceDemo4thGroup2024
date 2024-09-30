@@ -23,7 +23,7 @@ public class ReadFromExcel {
     public String username = sheet.getRow(1).getCell(0).getStringCellValue();
     public String password = sheet.getRow(1).getCell(1).getStringCellValue();
 
-    public String firstName = sheet2.getRow(0).getCell(2).getStringCellValue();
-    public String lastName = sheet2.getRow(1).getCell(2).getStringCellValue();
+    public String firstName = sheet2.getRow(2).getCell(0).getStringCellValue();
+    public String lastName = sheet2.getRow(2).getCell(1).getStringCellValue();
     public String zipCode = sheet2.getRow(2).getCell(2).getStringCellValue();
 }

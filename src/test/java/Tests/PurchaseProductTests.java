@@ -1,10 +1,13 @@
 package Tests;
 
 import Pages.CheckoutYourInformationPage;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.Test;
 
 import javax.swing.*;
+import java.time.Duration;
 
 @Test
 public class PurchaseProductTests extends Base {
@@ -87,6 +90,28 @@ public class PurchaseProductTests extends Base {
     public void enterZipTest(){
         checkoutInfoPage.enterZipCode(readFromExcel.zipCode);
         takesScreenshots.takesScreenshot(driver,"User Information");
+    }
+
+    @Test(dependsOnMethods = "enterZipTest")
+    public void continueButtonTest(){
+        checkoutInfoPage.clickContinueButton();
+    }
+
+    @Test(dependsOnMethods = "continueButtonTest")
+    public void verifyOverviewPageTest(){
+        checkoutOverviewPage.verifyOverviewTitleIsVisible();
+        takesScreenshots.takesScreenshot(driver,"Checkout (Overview)");
+    }
+
+    @Test(dependsOnMethods = "verifyOverviewPageTest")
+    public void calculationsTest(){
+        checkoutOverviewPage.calculations();
+    }
+
+    @Test(dependsOnMethods = "calculationsTest")
+    public void completeTest(){
+        checkoutCompletePage.verifyCheckoutCompleteTitleIsVisible();
+        takesScreenshots.takesScreenshot(driver,"Checkout (Complete!)");
     }
 
     @AfterTest

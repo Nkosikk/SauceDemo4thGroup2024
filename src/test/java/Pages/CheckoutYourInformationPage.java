@@ -24,6 +24,9 @@ public class CheckoutYourInformationPage {
     @FindBy(id = "postal-code")
     WebElement zipCode_id;
 
+    @FindBy(id = "continue")
+    WebElement continueButton_id;
+
 
     public CheckoutYourInformationPage(WebDriver driver) {
         this.driver = driver;
@@ -46,7 +49,11 @@ public class CheckoutYourInformationPage {
     }
 
     public void enterZipCode(String zipCode) {
-        zipCode_id.clear();
+        //zipCode_id.clear();
         zipCode_id.sendKeys(zipCode);
+    }
+
+    public void clickContinueButton() {
+        continueButton_id.click();
     }
 }
