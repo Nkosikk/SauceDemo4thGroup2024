@@ -18,11 +18,6 @@ public class ReadFromExcel {
     public String username = sheet.getRow(1).getCell(0).getStringCellValue();
     public String password = sheet.getRow(1).getCell(1).getStringCellValue();
 
-   // private static String testDataDir1 = System.getProperty("user.dir") + "/src/test/java/TestData/testUsers.xlsx";
-
-   //FileInputStream fis2 = new FileInputStream(testDataDir);
-   // XSSFWorkbook workbook1 = new XSSFWorkbook(fis2);
-
     XSSFSheet sheetTwo = workbook.getSheet("personalInfo");
 
     public String firstName = sheetTwo.getRow(1).getCell(0).getStringCellValue();
