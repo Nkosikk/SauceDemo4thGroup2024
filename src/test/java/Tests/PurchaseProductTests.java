@@ -63,7 +63,9 @@ public class PurchaseProductTests extends Base {
     @Test(dependsOnMethods = "clickContinueTest")
     public void checkOutOverviewPageTest(){ checkOutOverview.checkoutOverview();}
     @Test(dependsOnMethods = "checkOutOverviewPageTest")
-    public void finishButtonTest() { checkOutOverview.clickFinishButton();
+        public void validateItemsAddedToCartTest(){ checkOutOverview.checkIfItemsAddedInCartDisplay();}
+    @Test(dependsOnMethods = "checkOutOverviewPageTest")
+    public void finishButtonTest() { checkOutOverview.validateTotals();
         takesScreenshots.takeScreenshot(driver,"Finish Page");}
     @Test(dependsOnMethods = "finishButtonTest")
     public void backHomeTest() { checkOutComplete.clickBackHomeButton();}

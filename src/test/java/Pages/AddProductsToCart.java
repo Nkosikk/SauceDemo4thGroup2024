@@ -10,11 +10,10 @@ import java.time.Duration;
 
 public class AddProductsToCart {
     WebDriver driver;
-
-    @FindBy(xpath = "//button[@id='add-to-cart-sauce-labs-backpack']")
+    @FindBy(xpath = "//div[@class='inventory_item_name '][contains(.,'Sauce Labs Backpack')]")
     WebElement backpack_xpath;
 
-    @FindBy(xpath = "//button[contains(@id,'add-to-cart-sauce-labs-bike-light')]")
+    @FindBy(xpath = "//button[@id='add-to-cart-sauce-labs-bike-light']")
     WebElement bike_xpath;
 
     @FindBy(xpath = "//a[contains(@class,'shopping_cart_link')]")
