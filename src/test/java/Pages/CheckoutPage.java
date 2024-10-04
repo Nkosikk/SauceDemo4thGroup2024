@@ -15,6 +15,10 @@ public class CheckoutPage {
     WebElement checkoutPage_xpath;
     @FindBy(xpath = "//button[contains(@id,'checkout')]")
     WebElement checkoutButton_xpath;
+    @FindBy(xpath = "//div[@class='inventory_item_name'][contains(.,'Sauce Labs Backpack')]")
+    WebElement backpack;
+    @FindBy(xpath = "//div[@class='inventory_item_name'][contains(.,'Sauce Labs Bike Light')]")
+    WebElement bike;
 
     public CheckoutPage(WebDriver driver) {
         this.driver = driver;
@@ -23,6 +27,10 @@ public class CheckoutPage {
     public void verifyCheckoutPageIsVisible() {
         new WebDriverWait(driver, Duration.ofSeconds(20)).until(ExpectedConditions.visibilityOf(checkoutPage_xpath));
         checkoutPage_xpath.isDisplayed();
+    }
+    public void checkIfItemsAddedInCartDisplay(){
+        backpack.isDisplayed();
+        bike.isDisplayed();
     }
     public void clickCheckoutButton() {checkoutButton_xpath.click();}
 }

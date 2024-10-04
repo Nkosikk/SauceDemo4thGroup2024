@@ -10,7 +10,7 @@ import org.testng.Assert;
 
 import java.time.Duration;
 
-public class CheckOutOverview extends AddProductsToCart{
+public class CheckOutOverview {
     WebDriver driver;
 
     @FindBy(xpath = "//div[@class='app_logo'][contains(.,'Swag Labs')]")
@@ -29,21 +29,13 @@ public class CheckOutOverview extends AddProductsToCart{
     WebElement cancelButton_xpath;
 
 
-
-    public CheckOutOverview(WebDriver driver) {
-        super(driver);
-    }
-
     //public CheckOutOverview(WebDriver driver){this.driver = driver; }
 
     public void checkoutOverview(){
         new WebDriverWait(driver, Duration.ofSeconds(20)).until(ExpectedConditions.visibilityOf(checkoutHome_xpath));
         checkoutHome_xpath.isDisplayed();
     }
-    public void checkIfItemsAddedInCartDisplay(){
-        backpack_xpath.isDisplayed();
-        bike_xpath.isDisplayed();
-    }
+
     public void validateTotals(){
         // Calculate the sum of the two item prices
         double price1 = Double.parseDouble(item1_xpath.getText().replace("$", "").trim());

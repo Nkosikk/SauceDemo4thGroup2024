@@ -13,11 +13,11 @@ public class BrowserFactory {
 
     @BeforeTest
     public static WebDriver startBrowser(String browserChoice, String url) {
-        if (browserChoice.equalsIgnoreCase("chrome")) {
+        if (browserChoice.equalsIgnoreCase("edge")) {
             driver = new ChromeDriver();
         } else if (browserChoice.equalsIgnoreCase("firefox")) {
             driver = new FirefoxDriver();
-        } else if (browserChoice.equalsIgnoreCase("edge")) {
+        } else if (browserChoice.equalsIgnoreCase("chrome")) {
             driver = new EdgeDriver();
         } else {
             driver = new SafariDriver();

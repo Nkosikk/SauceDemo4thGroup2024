@@ -48,6 +48,8 @@ public class PurchaseProductTests extends Base {
     @Test(dependsOnMethods = "clickCart")
     public void verifyCheckoutPage() {checkoutPage.verifyCheckoutPageIsVisible();
         takesScreenshots.takeScreenshot(driver,"Cart");}
+    @Test(dependsOnMethods = "clickCart")
+    public void validateItemsAddedToCartTest(){ checkoutPage.checkIfItemsAddedInCartDisplay();}
     @Test(dependsOnMethods = "verifyCheckoutPage")
     public void clickCheckOut(){checkoutPage.clickCheckoutButton();}
     @Test(dependsOnMethods = "clickCheckOut")
@@ -62,8 +64,7 @@ public class PurchaseProductTests extends Base {
         takesScreenshots.takeScreenshot(driver,"Overview Page");}
     @Test(dependsOnMethods = "clickContinueTest")
     public void checkOutOverviewPageTest(){ checkOutOverview.checkoutOverview();}
-    @Test(dependsOnMethods = "checkOutOverviewPageTest")
-        public void validateItemsAddedToCartTest(){ checkOutOverview.checkIfItemsAddedInCartDisplay();}
+
     @Test(dependsOnMethods = "checkOutOverviewPageTest")
     public void finishButtonTest() { checkOutOverview.validateTotals();
         takesScreenshots.takeScreenshot(driver,"Finish Page");}
